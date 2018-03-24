@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Quack",
-    "version": "18.3.3",
-    "description": "No more echo chambers.",
+    "version": "18.3.4",
+    "description": "No echo chambers.",
     "author": "phrazzld",
     "content_scripts": [
         {
@@ -17,17 +17,17 @@
     },
     "browser_action": {
         "default_icon": {
-            "16": "public/images/ducky_16.png",
-            "32": "public/images/ducky_32.png",
-            "64": "public/images/ducky_64.png"
+            "16": "public/images/transparent_logo_16.png",
+            "32": "public/images/transparent_logo_32.png",
+            "64": "public/images/transparent_logo_64.png"
         }
     },
     "icons": {
-        "16": "public/images/ducky_16.png",
-        "32": "public/images/ducky_32.png",
-        "64": "public/images/ducky_64.png",
-        "128": "public/images/ducky_128.png",
-        "256": "public/images/ducky_256.png",
-        "512": "public/images/ducky_512.png"
+        "16": "public/images/transparent_logo_16.png",
+        "32": "public/images/transparent_logo_32.png",
+        "64": "public/images/transparent_logo_64.png",
+        "128": "public/images/transparent_logo_128.png",
+        "256": "public/images/transparent_logo_256.png",
+        "512": "public/images/transparent_logo_512.png"
     }
 }
