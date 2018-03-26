@@ -1,11 +1,6 @@
 // quack
 // background.js
 
-/*
-var opposingOpinion = "gaaarrr"
-chrome.tabs.create({ "url": "http://google.com/search?q=" + opposingOpinion })
-*/
-
 // MVP: run Quack when user clicks browser action
 chrome.browserAction.onClicked.addListener(function (tab) {
     // Send a message to the active tab
