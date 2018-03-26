@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Quack",
-    "version": "18.3.4",
+    "version": "18.3.5",
     "description": "No echo chambers.",
     "author": "phrazzld",
     "content_scripts": [

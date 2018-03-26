@@ -4,7 +4,8 @@
 // Listen for browser_action_button clicks
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        if (request.message === "clicked_browser_action") {
+        var isOnGoogle = window.location.href.includes(".google.")
+        if (request.message === "clicked_browser_action" && isOnGoogle) {
             var sentiment = document.title.replace(" - Google Search", "")
             var opposingOpinion = invertSentiment(sentiment)
             var searchUrl = "http://google.com/search?q=" + opposingOpinion
