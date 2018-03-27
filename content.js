@@ -26,6 +26,9 @@ function handleBrowserAction () {
         newTabs.push("https://scholar.google.com/scholar?q=" + invertSentiment(highlightedText))
         newTabs.push(baseUrl + "studies refuting " + highlightedText)
         newTabs.push(baseUrl + "criticisms of " + highlightedText)
+    } else if (window.location.href.includes("youtube.")) {
+        // Search for opposing YouTube videos
+        newTabs.push("https://www.youtube.com/results?search_query=" + invertSentiment(document.title.replace(" - YouTube", "")))
     } else {
         // Fall back on search engine behaviors
         var activeUrl = window.location.href
@@ -69,8 +72,8 @@ function pullQueryFromSearchEngine (activeUrl) {
 
 
 // Anti-echo chamber function
-// TODO: Make this an actually sophisticated algorithm, possibly with some real NLP
 function invertSentiment (original) {
+    /*
     var isAgainst = original.includes("bad") ||
         original.includes("against") ||
         original.includes("anti")
@@ -82,5 +85,7 @@ function invertSentiment (original) {
     } else {
         inverted = "arguments against " + original
     }
+    */
+    var inverted = window.nlp(original).sentences(0).toNegative().out()
     return inverted
 }
