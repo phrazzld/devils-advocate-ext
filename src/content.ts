@@ -121,13 +121,19 @@ CONTENT: ${context}
     // Create counter argument body
     const counterBody = document.createElement("div");
     counterBody.classList.add("toast-body");
-    counterBody.textContent = response.counterargument;
 
     // Append all elements to the toast element
     toast.appendChild(toastHeader);
     toast.appendChild(toastBody);
     toast.appendChild(counterHeader);
     toast.appendChild(counterBody);
+    // Break counterargument into paragraphs
+    const counterArgument = response.counterargument.split("\n");
+    counterArgument.forEach((paragraph: string) => {
+      const p = document.createElement("p");
+      p.textContent = paragraph;
+      counterBody.appendChild(p);
+    });
 
     // Append the toast element to the body
     document.body.appendChild(toast);
@@ -144,6 +150,8 @@ CONTENT: ${context}
     toast.style.maxWidth = "40%";
     toast.style.boxShadow = "0 0 10px 0px rgba(0,0,0,0.5)";
     toast.style.zIndex = "9999";
+    toast.style.maxHeight = "50%";
+    toast.style.overflow = "auto";
     // Keep the toast at the bottom of the screen even on scroll
     toast.style.position = "fixed";
 
