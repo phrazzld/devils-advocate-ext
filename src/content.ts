@@ -67,22 +67,19 @@ CONTENT: ${context}
       toast.style.maxWidth = "40%";
       // Give it shadow
       toast.style.boxShadow = "0 0 10px 0px rgba(0,0,0,0.5)";
-      // Remove the toast after 3 seconds
-      setTimeout(() => {
-        toast.remove();
-      }, 3000);
       return;
     }
 
     const toast = document.createElement("div");
     toast.classList.add("toast");
+    toast.style.fontFamily = "Roboto; Lato; sans-serif";
 
     // Create toast header
     const toastHeader = document.createElement("div");
     toastHeader.classList.add("toast-header");
-    const strong = document.createElement("strong");
-    strong.classList.add("mr-auto");
-    strong.textContent = "Core Argument";
+    /* const strong = document.createElement("strong"); */
+    /* strong.classList.add("mr-auto"); */
+    /* strong.textContent = "Core Argument"; */
     const closeButton = document.createElement("button");
     closeButton.classList.add("ml-2", "mb-1", "close");
     closeButton.setAttribute("type", "button");
@@ -91,21 +88,28 @@ CONTENT: ${context}
     closeButton.addEventListener("click", () => {
       toast.remove();
     });
-    toastHeader.appendChild(strong);
+    /* toastHeader.appendChild(strong); */
     toastHeader.appendChild(closeButton);
 
     // Style the close button
     closeButton.style.position = "absolute";
-    closeButton.style.top = "10px";
-    closeButton.style.right = "10px";
+    closeButton.style.top = "5px";
+    closeButton.style.right = "5px";
     closeButton.style.background = "transparent";
     closeButton.style.border = "none";
     closeButton.style.cursor = "pointer";
+    closeButton.style.fontSize = "20px";
 
     // Create toast body
-    const toastBody = document.createElement("div");
-    toastBody.classList.add("toast-body");
-    toastBody.textContent = response.coreArgument;
+    /* const toastBody = document.createElement("div"); */
+    /* toastBody.classList.add("toast-body"); */
+    // Break core argument into paragraphs
+    /* const coreArgument = response.rearticulatedCore.split("\n"); */
+    /* coreArgument.forEach((paragraph: string) => { */
+    /*   const p = document.createElement("p"); */
+    /*   p.textContent = paragraph; */
+    /*   toastBody.appendChild(p); */
+    /* }); */
 
     // Create counter argument header
     const counterHeader = document.createElement("div");
@@ -124,7 +128,7 @@ CONTENT: ${context}
 
     // Append all elements to the toast element
     toast.appendChild(toastHeader);
-    toast.appendChild(toastBody);
+    /* toast.appendChild(toastBody); */
     toast.appendChild(counterHeader);
     toast.appendChild(counterBody);
     // Break counterargument into paragraphs
@@ -150,11 +154,10 @@ CONTENT: ${context}
     toast.style.maxWidth = "40%";
     toast.style.boxShadow = "0 0 10px 0px rgba(0,0,0,0.5)";
     toast.style.zIndex = "9999";
-    toast.style.maxHeight = "50%";
+    toast.style.maxHeight = "75%";
     toast.style.overflow = "auto";
     // Keep the toast at the bottom of the screen even on scroll
     toast.style.position = "fixed";
-
   });
 };
 
