@@ -1,8 +1,9 @@
 // background.ts
 
-chrome.action.onClicked.addListener(function (tab) {
+chrome.action.onClicked.addListener(async (tab) => {
+  // Only inject the content script if the browser action has been clicked
   if (tab?.id) {
-    chrome.scripting.executeScript({
+    await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["content.js"],
     });
@@ -20,7 +21,6 @@ chrome.action.onClicked.addListener(function (tab) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("got data back, data:", data);
         sendResponse(data);
       })
       .catch((error) => {

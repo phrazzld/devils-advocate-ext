@@ -1,26 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Quack",
-  "version": "22.12.15",
-  "description": "No echo chambers.",
+  "name": "Devil's Advocate",
+  "version": "22.12.19",
+  "description": "There's always a counterargument.",
   "author": "phrazzld",
   "permissions": ["activeTab", "scripting"],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
+  "host_permissions": ["*://*/*"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {},
   "icons": {
-    "16": "images/transparent_logo_16.png",
-    "32": "images/transparent_logo_32.png",
-    "64": "images/transparent_logo_64.png",
-    "128": "images/transparent_logo_128.png",
-    "256": "images/transparent_logo_256.png",
-    "512": "images/transparent_logo_512.png"
+    "16": "images/logo-16.png",
+    "32": "images/logo-32.png",
+    "64": "images/logo-64.png",
+    "128": "images/logo-128.png",
+    "256": "images/logo-256.png",
+    "512": "images/logo-512.png"
   }
 }

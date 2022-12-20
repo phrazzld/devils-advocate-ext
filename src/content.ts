@@ -12,7 +12,7 @@ const showToast = () => {
   const description = document
     .querySelector('meta[name="description"]')
     ?.getAttribute("content");
-  const context = text.slice(0, 5000);
+  const context = text.slice(0, 2500);
 
   const coreContent = `
 TITLE: ${title}\n
@@ -74,42 +74,66 @@ CONTENT: ${context}
       return;
     }
 
-    // Create a toast element
     const toast = document.createElement("div");
     toast.classList.add("toast");
-    toast.innerHTML = `
-      <div class="toast-header">
-        <strong class="mr-auto">Core Argument</strong>
-        <button
-          type="button"
-          class="ml-2 mb-1 close"
-          data-dismiss="toast"
-          style="position:absolute; top:10px; right:10px; background:transparent; border:none; cursor:pointer;"
-        >
-          &times;
-        </button>
-      </div>
-      <div class="toast-body">
-        ${response.coreArgument}
-      </div>
-      <div class="toast-header" style="margin-top:10px;">
-        <strong class="mr-auto">Counter Argument</strong>
-      </div>
-      <div class="toast-body">
-        ${response.counterargument}
-      </div>
-    `;
 
-    // Make close button work
-    toast.querySelector(".close")?.addEventListener("click", () => {
+    // Create toast header
+    const toastHeader = document.createElement("div");
+    toastHeader.classList.add("toast-header");
+    const strong = document.createElement("strong");
+    strong.classList.add("mr-auto");
+    strong.textContent = "Core Argument";
+    const closeButton = document.createElement("button");
+    closeButton.classList.add("ml-2", "mb-1", "close");
+    closeButton.setAttribute("type", "button");
+    closeButton.setAttribute("data-dismiss", "toast");
+    closeButton.textContent = "×";
+    closeButton.addEventListener("click", () => {
       toast.remove();
     });
+    toastHeader.appendChild(strong);
+    toastHeader.appendChild(closeButton);
+
+    // Style the close button
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "10px";
+    closeButton.style.right = "10px";
+    closeButton.style.background = "transparent";
+    closeButton.style.border = "none";
+    closeButton.style.cursor = "pointer";
+
+    // Create toast body
+    const toastBody = document.createElement("div");
+    toastBody.classList.add("toast-body");
+    toastBody.textContent = response.coreArgument;
+
+    // Create counter argument header
+    const counterHeader = document.createElement("div");
+    counterHeader.classList.add("toast-header");
+    const counterStrong = document.createElement("strong");
+    counterStrong.classList.add("mr-auto");
+    counterStrong.textContent = "Counter Argument";
+    counterHeader.appendChild(counterStrong);
+
+    // Style the counter argument header
+    counterHeader.style.marginTop = "10px";
+
+    // Create counter argument body
+    const counterBody = document.createElement("div");
+    counterBody.classList.add("toast-body");
+    counterBody.textContent = response.counterargument;
+
+    // Append all elements to the toast element
+    toast.appendChild(toastHeader);
+    toast.appendChild(toastBody);
+    toast.appendChild(counterHeader);
+    toast.appendChild(counterBody);
 
     // Append the toast element to the body
     document.body.appendChild(toast);
 
-    // Show the toast
-    toast.style.position = "absolute";
+    // Add styling to the toast element
+    toast.style.position = "fixed";
     toast.style.bottom = "10px";
     toast.style.left = "10px";
     toast.style.backgroundColor = "white";
@@ -118,8 +142,11 @@ CONTENT: ${context}
     toast.style.padding = "10px";
     toast.style.minWidth = "30%";
     toast.style.maxWidth = "40%";
-    // Give it shadow
     toast.style.boxShadow = "0 0 10px 0px rgba(0,0,0,0.5)";
+    toast.style.zIndex = "9999";
+    // Keep the toast at the bottom of the screen even on scroll
+    toast.style.position = "fixed";
+
   });
 };
 
