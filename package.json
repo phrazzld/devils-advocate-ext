@@ -1,11 +1,11 @@
 {
-  "name": "quack",
+  "name": "devils-advocate-ext",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.js"
   },
-  "repository": "git@github.com:phrazzld/quack.git",
+  "repository": "git@github.com:phrazzld/devils-advocate-ext.git",
   "author": "phaedrus",
   "license": "MIT",
   "devDependencies": {
